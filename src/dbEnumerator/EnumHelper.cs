@@ -11,12 +11,12 @@ namespace dbEnumerator
             var type = typeof(TEnum);
 
             if (!type.IsEnum)
-                throw new Exception($"Type '{type.AssemblyQualifiedName}' must be an enum");
+                throw new ArgumentException($"Type '{type.AssemblyQualifiedName}' must be an enum");
 
             var underlyingType = Enum.GetUnderlyingType(type);
 
             if (underlyingType != typeof(int))
-                throw new Exception("Enum underlying type must be int");
+                throw new ArgumentException("Enum underlying type must be int");
 
             return type;
         }
