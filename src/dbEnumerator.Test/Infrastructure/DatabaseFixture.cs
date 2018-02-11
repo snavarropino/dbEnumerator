@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using dbEnumerator.Test.Model;
 using Microsoft.EntityFrameworkCore;
 using Respawn;
 

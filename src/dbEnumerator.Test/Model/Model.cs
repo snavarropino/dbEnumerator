@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace dbEnumerator.Test
+namespace dbEnumerator.Test.Model
 {
     public class SuperheroDbContext : DbContext
     {

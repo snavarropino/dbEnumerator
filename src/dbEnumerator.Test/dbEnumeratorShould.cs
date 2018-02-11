@@ -1,8 +1,7 @@
 using System;
-using System.ComponentModel;
-using System.Linq;
 using System.Threading.Tasks;
 using dbEnumerator.Test.Infrastructure;
+using dbEnumerator.Test.Model;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
@@ -46,18 +45,6 @@ namespace dbEnumerator.Test
                     .Should()
                     .Be(TestUtils.GetEnumDescription(ComicEditor.Dc));
             }
-        }
-    }
-    
-    public static class TestUtils
-    {
-        public static string GetEnumDescription<TEnum>(TEnum item)
-        {
-            var attribute = item.GetType().GetField(item.ToString())
-                .GetCustomAttributes(typeof(DescriptionAttribute), false).Cast<DescriptionAttribute>()
-                .FirstOrDefault();
-
-            return attribute?.Description ?? string.Empty;
         }
     }
 }
