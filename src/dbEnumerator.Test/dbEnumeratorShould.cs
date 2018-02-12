@@ -16,7 +16,7 @@ namespace dbEnumerator.Test
         public dbEnumeratorShould(DatabaseFixture fixture)
         {
             _fixture = fixture;
-            _fixture.ResetDatabase().GetAwaiter();
+            Task.Run(async () => { await _fixture.ResetDatabase(); }).Wait();
         }
 
         [Fact]
