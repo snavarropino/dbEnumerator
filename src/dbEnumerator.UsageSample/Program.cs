@@ -16,6 +16,7 @@ namespace dbEnumerator.UsageSample
 
             using (var ctx = new SuperheroDbContext(optionsBuilder.Options))
             {
+                ctx.Database.EnsureDeleted();
                 ctx.Database.EnsureCreated();
                 await EnumSeeder.SeedEnumDataAsync<ComicEditorCatalogue, ComicEditor>(ctx.ComicEditors);
                 await ctx.SaveChangesAsync();
