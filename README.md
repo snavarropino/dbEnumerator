@@ -48,9 +48,9 @@ In adition, we would like to have in our superhero entity with an enum type for 
     EnumBase class provided by dbEnumerator will contail: Id, Name and Description
 
 - Modify you Superhero class to
-  - create a navigation property to catalogue entity
-  - create a property, based on enum, to easily interact with this entity.  This enum based property will be ignored by entity framework
-  - hold a private field that will be used for the relationship foreig key
+  - create a property, based on enum, to easily interact with this entity (ComicEditor).  This enum based property will be ignored by entity framework
+  - hold a private field that will be used for the relationship foreig key (_comicEditorId)
+  - create a navigation property to catalogue entity (ComicEditorCatalogue)
     ```C#
     public class Superhero
     {
@@ -69,7 +69,7 @@ In adition, we would like to have in our superhero entity with an enum type for 
     }
     ```
 
-- Instruct you database context to properly manage relationship
+- Instruct your database context to properly manage relationship
 
     ```C#
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -82,7 +82,7 @@ In adition, we would like to have in our superhero entity with an enum type for 
     }
     ```
 
-- Seed data for the catalogue entity. This is done automatically by dbEnumerator
+- Seed data for the catalogue entity. This is automatically done by dbEnumerator
 
     ```C#
     await EnumBasedEntitySeeder.SeedEntityAsync<ComicEditorCatalogue, ComicEditor>(context.ComicEditors);
