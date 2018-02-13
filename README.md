@@ -1,4 +1,4 @@
-# dbEnumerator  [![NuGet](https://img.shields.io/badge/nuget-0.9-blue.svg)](https://www.nuget.org/packages/dbEnumerator/)
+# dbEnumerator  [![NuGet](https://img.shields.io/badge/nuget-0.9.1-blue.svg)](https://www.nuget.org/packages/dbEnumerator/)
 
 ## What is dbEnumerator?
 
@@ -33,7 +33,7 @@ In adition, we would like to have in our superhero entity with an enum type for 
 
         dotnet add package dbEnumerator
 
-    Both commands will download and install all required dependencies (Entity Framework Core).
+    Both commands will download and install all required dependencies (Entity Framework Core and Sql Server provider).
 
 - Create an enum type and an entity for the catalogue table based on the previous enum type
 
