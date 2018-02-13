@@ -17,7 +17,7 @@ If we had an entity (Superhero) with following fields
 
 may be we would like to have Comic editor modeled as a catalogue table in our database, so our database model looks like this:
 
-![Database model](/snavarropino/dbEnumerator/blob/master/docs/images/Superhero_Diagram1.png?raw=true)
+![Database model](https://github.com/snavarropino/dbEnumerator/blob/master/docs/images/Superhero_Diagram1.png?raw=true)
 
 In adition, we would like to have in our superhero entity with an enum type for the comic editor, not simply an int type for it. Let's see how to get it with dbEnumerator:
 
@@ -120,7 +120,7 @@ Sure, pull requests are more thn welcome!
 
 ## Backlog
 
-Several improvents are going to be added to dbEnumerator in order to simplify usage and include advanced features. PLease look here (TODO: backlog)
+Several improvents are going to be added to dbEnumerator in order to simplify usage and include advanced features. Please look here (TODO: backlog)
 
 ## Build status
 
