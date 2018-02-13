@@ -120,7 +120,7 @@ Sure, pull requests are more thn welcome!
 
 ## Backlog
 
-Several improvents are going to be added to dbEnumerator in order to simplify usage and include advanced features. Please look here (TODO: backlog)
+Several improvents are going to be added to dbEnumerator in order to simplify usage and include advanced features. Please look here (https://github.com/snavarropino/dbEnumerator/milestone/1)
 
 ## Build status
 
