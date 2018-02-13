@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>0.9</Version>
+    <Version>0.9.1</Version>
     <Authors>Sergio Navarro Pino</Authors>
     <Company />
     <PackageProjectUrl>https://github.com/snavarropino/dbEnumerator</PackageProjectUrl>
@@ -11,6 +11,8 @@
     <Copyright>Sergio Navarro Pino</Copyright>
     <RepositoryUrl>https://github.com/snavarropino/dbEnumerator</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>0.9.1.0</AssemblyVersion>
+    <Description>Utilities and guidance to manage catalogue tables with Entity Framework Core based on C# enums</Description>
   </PropertyGroup>
 
   <ItemGroup>
