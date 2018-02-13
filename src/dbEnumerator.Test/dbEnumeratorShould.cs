@@ -24,7 +24,7 @@ namespace dbEnumerator.Test
         {
             using (var context = _fixture.GetDbContext())
             {
-                await EnumSeeder.SeedEnumDataAsync<ComicEditorCatalogue, ComicEditor>(context.ComicEditors);
+                await EnumBasedEntitySeeder.SeedEntityAsync<ComicEditorCatalogue, ComicEditor>(context.ComicEditors);
                 await context.SaveChangesAsync();
 
                 (await context.ComicEditors.CountAsync())
@@ -38,7 +38,7 @@ namespace dbEnumerator.Test
         {
             using (var context = _fixture.GetDbContext())
             {
-                await EnumSeeder.SeedEnumDataAsync<ComicEditorCatalogue, ComicEditor>(context.ComicEditors);
+                await EnumBasedEntitySeeder.SeedEntityAsync<ComicEditorCatalogue, ComicEditor>(context.ComicEditors);
                 await context.SaveChangesAsync();
 
                 (await context.ComicEditors.SingleAsync(c => c.Id == (int) ComicEditor.Dc)).Description
@@ -46,5 +46,27 @@ namespace dbEnumerator.Test
                     .Be(TestUtils.GetEnumDescription(ComicEditor.Dc));
             }
         }
+
+        [Fact]
+        public void give_a_name_to_foreign_key_if_backing_field_starts_with_hyphen()
+        {
+            EnumBasedEntityConfigurator<object, object>.GetColumnName("_field")
+                .Should().Be("Field");
+        }
+
+        [Fact]
+        public void give_a_name_to_foreign_key_if_backing_field_does_not_start_with_hyphen()
+        {
+            EnumBasedEntityConfigurator<object, object>.GetColumnName("field")
+                .Should().Be("Field");
+        }
+        
+        public enum BadComicEditor
+        {
+            Marvel = 0,
+            Dc = 1
+        }
+
+        public class BadComicEditorCatalogue : EnumBasedEntity<BadComicEditor> { }
     }
 }

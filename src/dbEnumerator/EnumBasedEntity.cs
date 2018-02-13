@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace dbEnumerator
 {
-    public class EnumBase<TEnum> where TEnum : struct
+    public class EnumBasedEntity<TEnum> where TEnum : struct
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

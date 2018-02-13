@@ -6,7 +6,7 @@
     <Authors>Sergio Navarro Pino</Authors>
     <Company />
     <PackageProjectUrl>https://github.com/snavarropino/dbEnumerator</PackageProjectUrl>
-    <PackageTags>enums catalogue table</PackageTags>
+    <PackageTags>enums catalogue table efcore</PackageTags>
     <PackageReleaseNotes>Manage in an easy way enum types representing catalogue tables in your Entity Framework Core entities</PackageReleaseNotes>
     <Copyright>Sergio Navarro Pino</Copyright>
     <RepositoryUrl>https://github.com/snavarropino/dbEnumerator</RepositoryUrl>
@@ -15,5 +15,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
   </ItemGroup>
 </Project>

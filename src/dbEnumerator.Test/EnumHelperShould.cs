@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Threading.Tasks;
 using FluentAssertions;
 using Xunit;
 
@@ -26,13 +25,13 @@ namespace dbEnumerator.Test
         }
 
         [Fact]
-        public void detect_a_enum_not_based_on_int()
+        public void detect_an_enum_not_based_on_int()
         {
             Action act = () => EnumHelper.EnsureEnum<UIntBasedEnum>();
 
             act
                 .Should().Throw<ArgumentException>()
-                .WithMessage("Enum underlying type must be int");
+                .WithMessage("Underlying enum type must be int");
         }
 
         [Fact]
@@ -55,6 +54,13 @@ namespace dbEnumerator.Test
         [Description("A description")]
         A=1,
         B=2
+    }
+
+    enum InvalidValidEnum
+    {
+        [Description("A description")]
+        A = 0,
+        B = 1
     }
 
     enum UIntBasedEnum: uint

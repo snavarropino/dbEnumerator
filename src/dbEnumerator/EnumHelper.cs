@@ -16,7 +16,7 @@ namespace dbEnumerator
             var underlyingType = Enum.GetUnderlyingType(type);
 
             if (underlyingType != typeof(int))
-                throw new ArgumentException("Enum underlying type must be int");
+                throw new ArgumentException("Underlying enum type must be int");
 
             return type;
         }

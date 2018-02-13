@@ -1,15 +1,14 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace dbEnumerator
 {
-    public class EnumSeeder
+    public class EnumBasedEntitySeeder
     {
-        public static async Task SeedEnumDataAsync<TData, TEnum>(DbSet<TData> items)
-            where TData : EnumBase<TEnum>
+        public static async Task SeedEntityAsync<TEntity, TEnum>(DbSet<TEntity> items)
+            where TEntity : EnumBasedEntity<TEnum>
             where TEnum : struct
         {
             var enumType = EnumHelper.EnsureEnum<TEnum>();
@@ -19,11 +18,11 @@ namespace dbEnumerator
                 var id = (int)Convert.ChangeType(evalue, typeof(int));
 
                 if (id <= 0)
-                    throw new Exception("Enum underlying value must start with 1");
+                    throw new ArgumentException("Underlying enum value must start with 1");
 
                 if (!items.Any(a => a.Id == id))
                 {
-                    var item = Activator.CreateInstance<TData>();
+                    var item = Activator.CreateInstance<TEntity>();
                     item.Id = id;
                     item.Name = Enum.GetName(enumType, evalue);
                     item.Description = EnumHelper.GetEnumDescription(evalue);

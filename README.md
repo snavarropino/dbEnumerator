@@ -43,7 +43,7 @@ In adition, we would like to have in our superhero entity with an enum type for 
             Marvel = 1,
             Dc = 2
         }
-        public class ComicEditorCatalogue : EnumBase<ComicEditor> { }
+        public class ComicEditorCatalogue : EnumBasedEntity<ComicEditor> { }
     ```
     EnumBase class provided by dbEnumerator will contail: Id, Name and Description
 
@@ -74,24 +74,18 @@ In adition, we would like to have in our superhero entity with an enum type for 
     ```C#
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Superhero>()
-            .Ignore(s => s.ComicEditor)      // Ignore enum property
-            .Property<int>("_comicEditorId") // Define backing field with no property
-            .HasColumnName("ComicEditorId")  // Set proper database column name for foreign key
-            .IsRequired();
-
-        modelBuilder.Entity<Superhero>()
-            .HasOne(s => s.ComicEditorCatalogue)
-            .WithMany()
-            .HasForeignKey("_comicEditorId") // Set foreign key to backing field
-            .IsRequired();
+        EnumBasedEntityConfigurator<Superhero, ComicEditorCatalogue>
+                .Register(modelBuilder,
+                          superhero => superhero.ComicEditor,            //Property based on enum that is goint to be ignored by Entity Framework Core
+                          "_comicEditorId",                              //Name of private field that is going to act as Backing field
+                          superhero => superhero.ComicEditorCatalogue ); //Navigation property to catalogue table
     }
     ```
 
 - Seed data for the catalogue entity. This is done automatically by dbEnumerator
 
     ```C#
-    await EnumSeeder.SeedEnumDataAsync<ComicEditorCatalogue, ComicEditor>(context.ComicEditors);
+    await EnumBasedEntitySeeder.SeedEntityAsync<ComicEditorCatalogue, ComicEditor>(context.ComicEditors);
     ```
 
 - Use and enjoy!

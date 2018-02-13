@@ -10,17 +10,11 @@ namespace dbEnumerator.UsageSample
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Superhero>()
-                .Ignore(s => s.ComicEditor)      // Ignore enum property
-                .Property<int>("_comicEditorId")   // Define backing field with no property
-                .HasColumnName("ComicEditorId")       // Set proper column name for foreign key
-                .IsRequired();
-
-            modelBuilder.Entity<Superhero>()
-                .HasOne(s => s.ComicEditorCatalogue)
-                .WithMany()
-                .HasForeignKey("_comicEditorId") // Set foreign key to backing field
-                .IsRequired();
+            EnumBasedEntityConfigurator<Superhero, ComicEditorCatalogue>
+                .Register(modelBuilder,
+                          superhero => superhero.ComicEditor, 
+                          "_comicEditorId",
+                          superhero => superhero.ComicEditorCatalogue );
         }
     }
 
@@ -46,5 +40,5 @@ namespace dbEnumerator.UsageSample
         Marvel = 1,
         Dc = 2
     }
-    public class ComicEditorCatalogue : EnumBase<ComicEditor> { }
+    public class ComicEditorCatalogue : EnumBasedEntity<ComicEditor> { }
 }

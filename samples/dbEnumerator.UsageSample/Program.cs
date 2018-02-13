@@ -18,7 +18,7 @@ namespace dbEnumerator.UsageSample
             {
                 ctx.Database.EnsureDeleted();
                 ctx.Database.EnsureCreated();
-                await EnumSeeder.SeedEnumDataAsync<ComicEditorCatalogue, ComicEditor>(ctx.ComicEditors);
+                await EnumBasedEntitySeeder.SeedEntityAsync<ComicEditorCatalogue, ComicEditor>(ctx.ComicEditors);
                 await ctx.SaveChangesAsync();
                 Console.WriteLine("Database create and seeded...");
 
