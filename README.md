@@ -120,4 +120,6 @@ Several improvents are going to be added to dbEnumerator in order to simplify us
 
 | Platform                    | Status                                                                                                                                  |
 |-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| VSTS (.NET Core) | [![Build status](https://ci.appveyor.com/api/projects/status/nxoyeq5r03tk6cpq/branch/master?svg=true)](https://ci.appveyor.com/project/lurumad/aspnetcore-health/branch/master) |
+| VSTS (.NET Core) | [![Build Status](https://dev.azure.com/sergionavarropino/dbEnumeratorCI/_apis/build/status/dbEnumerator%20Nightly%20build)](https://dev.azure.com/sergionavarropino/dbEnumeratorCI/_build/latest?definitionId=1) |
+
+
